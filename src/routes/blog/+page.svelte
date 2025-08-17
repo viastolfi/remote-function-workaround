@@ -4,6 +4,10 @@
 
 <h1>Recent posts</h1>
 
+<button class="bg-sky-500 hover:bg-sky-700" onclick={() => getPostsRemote().refresh()}>
+	Check for new posts
+</button>
+
 <svelte:boundary>
 	{#snippet pending()}
 		<div class="text-center py-8">
