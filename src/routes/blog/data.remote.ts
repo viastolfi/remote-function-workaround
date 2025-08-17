@@ -20,6 +20,4 @@ export const createPostRemote = form(async (data) => {
 	}
 
     await createPost({title, content})
-
-    await getPostsRemote().refresh()
 })

@@ -1,8 +1,18 @@
 <script lang="ts">
 	import { createPostRemote, getPostsRemote } from './data.remote';
+    import { showToast } from '$lib';
 </script>
 
-<form {...createPostRemote}>
+<form {...createPostRemote.enhance(async ({ form, data, submit}) => {
+    try {
+		await submit().updates(getPostsRemote());
+		form.reset();
+
+		showToast('Successfully published!');
+	} catch (error) {
+		showToast('Oh no! Something went wrong');
+	}
+})}>
 	<label>
 		<h2>Title</h2>
 		<input name="title" />
@@ -15,6 +25,7 @@
 
 	<button>Publish!</button>
 </form>
+
 
 <h1>Recent posts</h1>
 
