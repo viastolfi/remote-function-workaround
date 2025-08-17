@@ -1,6 +1,20 @@
 <script lang="ts">
-	import { getPostsRemote } from './data.remote';
+	import { createPostRemote, getPostsRemote } from './data.remote';
 </script>
+
+<form {...createPostRemote}>
+	<label>
+		<h2>Title</h2>
+		<input name="title" />
+	</label>
+
+	<label>
+		<h2>Write your post</h2>
+		<textarea name="content"></textarea>
+	</label>
+
+	<button>Publish!</button>
+</form>
 
 <h1>Recent posts</h1>
 
